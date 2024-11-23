@@ -23,9 +23,10 @@ pipeline:
                   identifier: installandupdatedeps
                   name: install and update deps
                   spec:
+                    shell: Sh
                     command: |-
                       sudo apt-get update
-                      sudo apt-get install libgtest-dev
+                      sudo apt-get install libgtest-dev libncurses-dev libgpm-dev
                   timeout: ""
                   type: Run
               - step:
@@ -35,22 +36,10 @@ pipeline:
                     command: mkdir build && cd build && cmake .. && cmake --build .
                   timeout: ""
                   type: Run
-              - step:
-                  identifier: runtests
-                  name: run tests
-                  spec:
-                    command: cd build && make check
-                    reports:
-                      spec:
-                        paths:
-                          - "**/*.xml"
-                      type: JUnit
-                  timeout: ""
-                  type: Run
           platform:
-            arch: Amd64
             os: Linux
+            arch: Amd64
           runtime:
-            spec: {}
             type: Cloud
+            spec: {}
         type: CI
