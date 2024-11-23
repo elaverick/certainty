@@ -1,0 +1,14 @@
+inputSet:
+  name: Build_elaverick_certainty_1732371060156-pr-trigger-input-set
+  identifier: Build_elaverick_certainty_1732371060156prtriggerinputset
+  orgIdentifier: default
+  projectIdentifier: Certainty
+  pipeline:
+    identifier: Build_elaverick_certainty_1732371060156
+    properties:
+      ci:
+        codebase:
+          build:
+            type: PR
+            spec:
+              number: <+trigger.prNumber>
