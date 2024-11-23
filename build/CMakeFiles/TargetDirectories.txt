@@ -1,3 +1,0 @@
-/home/elaverick/certainty/build/CMakeFiles/certainty.dir
-/home/elaverick/certainty/build/CMakeFiles/edit_cache.dir
-/home/elaverick/certainty/build/CMakeFiles/rebuild_cache.dir
