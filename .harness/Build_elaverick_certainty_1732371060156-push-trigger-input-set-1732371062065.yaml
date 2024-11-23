@@ -1,0 +1,14 @@
+inputSet:
+  name: Build_elaverick_certainty_1732371060156-push-trigger-input-set
+  identifier: Build_elaverick_certainty_1732371060156pushtriggerinputset
+  orgIdentifier: default
+  projectIdentifier: Certainty
+  pipeline:
+    identifier: Build_elaverick_certainty_1732371060156
+    properties:
+      ci:
+        codebase:
+          build:
+            type: branch
+            spec:
+              branch: <+trigger.branch>
