@@ -1,0 +1,56 @@
+pipeline:
+  identifier: Build_elaverick_certainty_1732371060156
+  name: Build certainty
+  orgIdentifier: default
+  projectIdentifier: Certainty
+  properties:
+    ci:
+      codebase:
+        build: <+input>
+        connectorRef: account.Github_OAuth_1732292412255
+        repoName: elaverick/certainty
+  stages:
+    - stage:
+        identifier: build
+        name: build
+        spec:
+          caching:
+            enabled: true
+          cloneCodebase: true
+          execution:
+            steps:
+              - step:
+                  identifier: installandupdatedeps
+                  name: install and update deps
+                  spec:
+                    command: |-
+                      sudo apt-get update
+                      sudo apt-get install libgtest-dev
+                  timeout: ""
+                  type: Run
+              - step:
+                  identifier: cmakebuildmake
+                  name: cmake build  make
+                  spec:
+                    command: mkdir build && cd build && cmake .. && cmake --build .
+                  timeout: ""
+                  type: Run
+              - step:
+                  identifier: runtests
+                  name: run tests
+                  spec:
+                    command: cd build && make check
+                    reports:
+                      spec:
+                        paths:
+                          - "**/*.xml"
+                      type: JUnit
+                  timeout: ""
+                  type: Run
+          platform:
+            arch: Amd64
+            os: Linux
+          runtime:
+            spec: {}
+            type: Cloud
+        type: CI
